@@ -2,7 +2,17 @@
 name = "rust-client-server"
 version = "0.1.0"
 edition = "2021"
+autobins = false
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+json = "0.12.4"
+
+[[bin]]
+name = "client"
+path = "src/client/client.rs"
+
+[[bin]]
+name = "server"
+path = "src/server/server.rs"
