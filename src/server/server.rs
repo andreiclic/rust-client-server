@@ -2,21 +2,39 @@ use std::thread;
 use std::net::{TcpListener, TcpStream, Shutdown};
 use std::io::{Read, Write};
 use std::str::from_utf8;
+use json::object;
+
+fn create_response(client_id: u32, timestamp: u64, request_type: u32, request_body: String) -> String {
+    let response_body = request_body;
+    
+    let response_data = object!{
+        "Client-ID": client_id,
+        "Timestamp": timestamp,
+        "Request-Type": request_type,
+        "Response-Body": response_body
+    };
+
+    response_data.dump()
+}
 
 fn handle_client(mut stream: TcpStream) {
     let mut data = [0 as u8; 100]; // using 100 byte buffer
     while match stream.read(&mut data) {
         Ok(size) => {
             if size > 0 {
-                println!("size {}", size);
-
                 let str_data = from_utf8(&data[0..size]).expect("err");
                 let parsed_data = json::parse(str_data).unwrap();
 
-                println!("client_id {}", parsed_data["Client-ID"]);
+                let response = create_response(
+                    parsed_data["Client-ID"].as_u32().unwrap(), 
+                    parsed_data["Timestamp"].as_u64().unwrap(),
+                    parsed_data["Request-Type"].as_u32().unwrap(),
+                    parsed_data["Request-Body"].to_string());
 
-                // echo everything!
-                // stream.write(&data[0..size]).unwrap();
+                println!("response {}", response);
+                println!("Sent response");
+
+                stream.write_all(response.as_bytes()).unwrap();
             }
 
             true
