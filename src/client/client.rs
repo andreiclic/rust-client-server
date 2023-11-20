@@ -64,7 +64,7 @@ fn receive_response(mut stream: TcpStream) {
                 let str_data = from_utf8(&data[0..size]).expect("err");
                 let parsed_response = json::parse(str_data).unwrap();
 
-                println!("response {}", parsed_response);
+                println!("Received response {}", parsed_response);
             }
         },
         Err(_) => {}
@@ -74,23 +74,23 @@ fn receive_response(mut stream: TcpStream) {
 fn main() {
     let (client_id, server_info) = init_client();
 
-    let request = create_request(client_id);
+    loop {
+        let request = create_request(client_id);
 
-    println!("request {}", request);
+        println!("Sending request {}", request);
 
-    match TcpStream::connect(server_info) {
-        Ok(mut stream) => {
-            println!("Successfully connected to server in port 3333");
+        match TcpStream::connect(server_info.clone()) {
+            Ok(mut stream) => {
+                println!("Successfully connected to server in port 3333");
 
-            stream.write_all(request.as_bytes()).unwrap();
-            println!("Sent request, waiting for response...");
+                stream.write_all(request.as_bytes()).unwrap();
+                println!("Sent request, waiting for response...");
 
-            receive_response(stream);
-        },
-        Err(e) => {
-            println!("Failed to connect: {}", e);
+                receive_response(stream);
+            },
+            Err(e) => {
+                println!("Failed to connect: {}", e);
+            }
         }
     }
-
-    println!("Terminated.");
 }

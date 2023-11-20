@@ -4,8 +4,21 @@ use std::io::{Read, Write};
 use std::str::from_utf8;
 use json::object;
 
-fn create_response(client_id: u32, timestamp: u64, request_type: u32, request_body: String) -> String {
-    let response_body = request_body;
+fn create_response(client_id: u32, timestamp: u64, request_type: u32, request_body: String) -> Option<String> {
+    let response_body;
+    
+    match request_type {
+        0 => {
+            response_body = request_body;
+        },
+        1 => {
+            response_body = String::from("config info");
+        },
+        _ => {
+            println!("Unsupported Request-Type ({})", request_type);
+            return None;
+        }
+    }
     
     let response_data = object!{
         "Client-ID": client_id,
@@ -14,7 +27,7 @@ fn create_response(client_id: u32, timestamp: u64, request_type: u32, request_bo
         "Response-Body": response_body
     };
 
-    response_data.dump()
+    Some(response_data.dump())
 }
 
 fn handle_client(mut stream: TcpStream) {
@@ -24,17 +37,20 @@ fn handle_client(mut stream: TcpStream) {
             if size > 0 {
                 let str_data = from_utf8(&data[0..size]).expect("err");
                 let parsed_data = json::parse(str_data).unwrap();
-
+                
                 let response = create_response(
                     parsed_data["Client-ID"].as_u32().unwrap(), 
                     parsed_data["Timestamp"].as_u64().unwrap(),
                     parsed_data["Request-Type"].as_u32().unwrap(),
                     parsed_data["Request-Body"].to_string());
 
-                println!("response {}", response);
-                println!("Sent response");
-
-                stream.write_all(response.as_bytes()).unwrap();
+                match response {
+                    Some(resp) => {
+                        println!("Sending response {}", resp);
+                        stream.write_all(resp.as_bytes()).unwrap();
+                    },
+                    None => {}
+                }
             }
 
             true
