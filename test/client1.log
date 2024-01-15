@@ -1,0 +1,29 @@
+[1705337018771] client1 finished initialization
+[1705337021322] Sending request {"Client-ID":1,"Timestamp":1705337021322,"Request-Type":0,"Request-Body":"abcdfg"}
+[1705337021323] Successfully connected to server on port 3333
+[1705337021325] Received response {"Client-ID":1,"Timestamp":1705337021322,"Request-Type":0,"Response-Body":"abcdfg"}
+[1705337021325] The previous request took 3ms
+[1705337024617] Sending request {"Client-ID":1,"Timestamp":1705337024617,"Request-Type":0,"Request-Body":"awygruygr237r7623f74f2364"}
+[1705337024617] Successfully connected to server on port 3333
+[1705337025781] Sending request {"Client-ID":1,"Timestamp":1705337025781,"Request-Type":1,"Request-Body":""}
+[1705337025781] Successfully connected to server on port 3333
+[1705337025781] Received response {"Client-ID":1,"Timestamp":1705337025781,"Request-Type":1,"Response-Body":"config info"}
+[1705337025781] The previous request took 0ms
+[1705337035271] Sending request {"Client-ID":1,"Timestamp":1705337035271,"Request-Type":0,"Request-Body":"auge8y23grt732frfvgvfeghfhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"}
+[1705337035271] Successfully connected to server on port 3333
+[1705337062951] Sending request {"Client-ID":1,"Timestamp":1705337062951,"Request-Type":0,"Request-Body":"324yug32743274g"}
+[1705337062951] Successfully connected to server on port 3333
+[1705337062951] Received response {"Client-ID":1,"Timestamp":1705337062951,"Request-Type":0,"Response-Body":"324yug32743274g"}
+[1705337062951] The previous request took 0ms
+[1705337076304] Sending request {"Client-ID":1,"Timestamp":1705337076304,"Request-Type":0,"Request-Body":"gg76f76f65d65d5d5s54s4444444444444"}
+[1705337076304] Successfully connected to server on port 3333
+[1705337088071] Sending request {"Client-ID":1,"Timestamp":1705337088071,"Request-Type":0,"Request-Body":"kkkkkkkkkkkkkkkkkkkkkkkkkk"}
+[1705337088071] Successfully connected to server on port 3333
+[1705337098395] Sending request {"Client-ID":1,"Timestamp":1705337098395,"Request-Type":0,"Request-Body":"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"}
+[1705337098395] Successfully connected to server on port 3333
+[1705337122907] Sending request {"Client-ID":1,"Timestamp":1705337122907,"Request-Type":0,"Request-Body":"jjjjjjjjjjjjjjjjjjjj"}
+[1705337122907] Successfully connected to server on port 3333
+[1705337122907] Received response {"Client-ID":1,"Timestamp":1705337122907,"Request-Type":0,"Response-Body":"jjjjjjjjjjjjjjjjjjjj"}
+[1705337122907] The previous request took 0ms
+[1705337127355] Sending request {"Client-ID":1,"Timestamp":1705337127355,"Request-Type":0,"Request-Body":"kkkkkkkkkkkkkkkkkkkkkkkkkk"}
+[1705337127355] Successfully connected to server on port 3333

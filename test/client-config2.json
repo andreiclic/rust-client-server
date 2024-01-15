@@ -1,0 +1,5 @@
+{
+    "Client-ID": 2,
+    "Config-Server": "localhost:3333",
+    "Log-File": "../../test/client2.log"
+}
